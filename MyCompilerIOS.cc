@@ -39,15 +39,15 @@ int MyCompiler::yylex()
 }
 
 void MyCompiler::yyerror(char *m)
-{ cerr<<(int)yylloc.first_line<<": "<<m<<" at token '"
-      <<(char *)yylloc.text<<"'"<<endl;
+{ std::cerr<<(int)yylloc.first_line<<": "<<m<<" at token '"
+      <<(char *)yylloc.text<<"'"<<std::endl;
 }
 
 int main(int argc,char **argv)
 {
  MyCompiler aCompiler;
  int result=aCompiler.yyparse();
- cout<<"Result of Parsing="<<(result?"Error":"OK")<<endl;
+ std::cout<<"Result of Parsing="<<(result?"Error":"OK")<<std::endl;
  return 0;
 };
 

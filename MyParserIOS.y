@@ -21,8 +21,8 @@
 %define ERROR_BODY =0
 %define LEX_BODY =0
 %header{
-#include <iostream.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
 %}
 
 %union {
@@ -37,12 +37,12 @@
 /* Sample parser. Does count Chars in a line, and lines in file */
 %%
 file	: lines
-	{cout<<"nlines="<<($1)<<endl; /* show line count */}
+	{std::cout<<"nlines="<<($1)<<std::endl; /* show line count */}
 	;
 lines 	: line {$$=1; /* first line of all */}
 	| lines line {$$=$1+1;	/* count one more line */}
 	;
-line 	: chars EOL_TOKEN {$$=$1;cout<<"nchars="<<($1)<<endl; /* show char count */}
+line 	: chars EOL_TOKEN {$$=$1;std::cout<<"nchars="<<($1)<<std::endl; /* show char count */}
 	;
 chars	: CHAR_TOKEN { $$=1;/* first char of line */}
 	| chars CHAR_TOKEN {$$=$1+1; /* count one more char */}
