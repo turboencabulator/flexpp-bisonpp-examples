@@ -22,7 +22,7 @@ class MyCompiler : public MyParser
  MyScanner theScanner;
  public:
  virtual int yylex();
- virtual void yyerror(char *m);
+ virtual void yyerror(const char *m);
  MyCompiler() 
   {};
 };
@@ -38,7 +38,7 @@ int MyCompiler::yylex()
  return token;
 }
 
-void MyCompiler::yyerror(char *m)
+void MyCompiler::yyerror(const char *m)
 { fprintf(stderr,"%d: %s at token '%s'\n",yylloc.first_line, m,yylloc.text);
 }
 

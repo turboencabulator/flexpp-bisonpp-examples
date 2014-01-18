@@ -18,7 +18,7 @@
 %name DmanParser
 %union {
 	char theChar;
-	char *theString;
+	const char *theString;
 	}
 %header{
 typedef YY_DmanParser_STYPE TokenValue;

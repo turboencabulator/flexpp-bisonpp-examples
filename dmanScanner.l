@@ -167,7 +167,7 @@ class DmanConverter : private DmanScanner,
 {protected:
  int Scan();
  public:
- void PrintError(char *s );
+ void PrintError(const char *s );
  DmanConverter();
  void SetDebug(int d);
  ~DmanConverter();
@@ -199,7 +199,7 @@ int DmanConverter::Scan()
  return t;
 };
 
-void DmanConverter::PrintError(char *s )
+void DmanConverter::PrintError(const char *s )
 {fprintf(stderr,"%s\n",s);
  fprintf(stderr,"Stopped at or near token (line %d ,column %d -line %d ,column %d):\"%s\"\n",
       theTokenLocation.first_line, theTokenLocation.first_column,
