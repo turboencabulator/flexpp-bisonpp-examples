@@ -1,4 +1,3 @@
-static char SccsId[]="%Z% %M% %Y% %Q% %I% %E% %U% (%F%)";
 //
 // Nom du Fichier : 	|>nom_fichier<|
 // Titre : 		|>Titre<|

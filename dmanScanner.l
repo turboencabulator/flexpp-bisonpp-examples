@@ -1,4 +1,3 @@
-/* @(#) dmanScanner.l LexSource asterisk 1.14 93/03/11 14:00:05 (SCCS/s.dmanScanner.l) */
 /*
  * Nom du Fichier : 	|>nom_fichier<|
  * Titre : 		|>Titre<|
@@ -19,7 +18,6 @@
 %x DANS_COMMENT
 %name DmanScanner
 %{
-static char SccsId[]="@(#) dmanScanner.l LexSource asterisk 1.14 93/03/11 14:00:05 (SCCS/s.dmanScanner.l)";
 #include "dmanParser.h"
 #define YY_NULL 0
 #define YY_USER_ACTION BeginAction();

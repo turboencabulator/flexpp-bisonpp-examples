@@ -1,4 +1,3 @@
-/* @(#) dmanParser.y YaccSource asterisk 1.14 93/07/05 16:13:06 (SCCS/s.dmanParser.y) */
 /*
  * Nom du Fichier : 	|>nom_fichier<|
  * Titre : 		|>Titre<|
@@ -27,9 +26,6 @@ typedef
     { int first_line,last_line,first_column,last_column;
       char *text;
     } TokenLocation;
-%}
-%{
-static char SccsId[]="@(#) dmanParser.y YaccSource asterisk 1.14 93/07/05 16:13:06 (SCCS/s.dmanParser.y)";
 %}
 %define LSP_NEEDED
 %define DEBUG 1
