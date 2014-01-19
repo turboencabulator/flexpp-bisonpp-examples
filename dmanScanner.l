@@ -2,7 +2,7 @@
 /*
  * Nom du Fichier : 	|>nom_fichier<|
  * Titre : 		|>Titre<|
- * Auteur:		|>auteur<|		
+ * Auteur:		|>auteur<|
  * Date de creation :	|>dateCreation<|
  */
 /* Description :
@@ -10,7 +10,7 @@
  *	Objet : |>objet<|
  *
  */
-/* 
+/*
  * historique :
  * |>date<|	|>auteur<|	|>objet<|
  */
@@ -162,7 +162,7 @@ void DmanScanner::BeginAction()
 
 /* parseur sur scanner */
 
-class DmanConverter : private DmanScanner, 
+class DmanConverter : private DmanScanner,
                    public DmanParser
 {protected:
  int Scan();
@@ -172,7 +172,7 @@ class DmanConverter : private DmanScanner,
  void SetDebug(int d);
  ~DmanConverter();
 };
-void DmanConverter::SetDebug(int d) 
+void DmanConverter::SetDebug(int d)
 {debugFlag=d;
  fprintf(stderr,"DEBUG MODE =%d\n",debugFlag);};
 DmanConverter::DmanConverter() {debugFlag=0;};
@@ -205,7 +205,7 @@ void DmanConverter::PrintError(const char *s )
       theTokenLocation.first_line, theTokenLocation.first_column,
       theTokenLocation.last_line, theTokenLocation.last_column,
       theTokenLocation.text);
- 
+
 };
 
 int main(int argc,char **argv)
@@ -213,7 +213,7 @@ int main(int argc,char **argv)
  DmanConverter theConverter;
  int nok;
  nok=theConverter.Parse();
- if(nok || theConverter.errorCount>0) 
+ if(nok || theConverter.errorCount>0)
     { fprintf(stderr,"%d Errors when parsing.\n",theConverter.errorCount);nok=1;}
  return( nok );
 };

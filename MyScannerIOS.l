@@ -2,7 +2,7 @@
 /*
  * Nom du Fichier : 	|>nom_fichier<|
  * Titre : 		|>Titre<|
- * Auteur:		|>auteur<|		
+ * Auteur:		|>auteur<|
  * Date de creation :	|>dateCreation<|
  */
 /* Description :
@@ -10,7 +10,7 @@
  *	Objet : |>objet<|
  *
  */
-/* 
+/*
  * historique :
  * |>date<|	|>auteur<|	|>objet<|
  */
@@ -20,7 +20,7 @@
 %define LEX_PARAM YY_MyParser_STYPE *val,YY_MyParser_LTYPE *loc
 %define MEMBERS public: int theLine,theColumn;
 %define CONSTRUCTOR_INIT : theLine(1),theColumn(1)
-%header{ 
+%header{
 #include "MyParserIOS.h"
 %}
 

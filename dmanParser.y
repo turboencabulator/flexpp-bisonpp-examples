@@ -2,7 +2,7 @@
 /*
  * Nom du Fichier : 	|>nom_fichier<|
  * Titre : 		|>Titre<|
- * Auteur:		|>auteur<|		
+ * Auteur:		|>auteur<|
  * Date de creation :	|>dateCreation<|
  */
 /* Description :
@@ -10,7 +10,7 @@
  *	Objet : |>objet<|
  *
  */
-/* 
+/*
  * historique :
  * |>date<|	|>auteur<|	|>objet<|
  */
@@ -42,12 +42,12 @@ static char SccsId[]="@(#) dmanParser.y YaccSource asterisk 1.14 93/07/05 16:13:
 %define ERROR PrintError
 %define NERRS errorCount
 %define DEBUG_FLAG debugFlag
-%define MEMBERS  
-%define PARSE Parse 
-%define PARSE_PARAM 
-%define CONSTRUCTOR_PARAM 
-%define CONSTRUCTOR_INIT 
-%define CONSTRUCTOR_CODE 
+%define MEMBERS
+%define PARSE Parse
+%define PARSE_PARAM
+%define CONSTRUCTOR_PARAM
+%define CONSTRUCTOR_INIT
+%define CONSTRUCTOR_CODE
 
 %start man_page
 %token CMD_HEADER  CMD_BAD CMD_SECTION CMD_SSECTION
@@ -55,11 +55,11 @@ static char SccsId[]="@(#) dmanParser.y YaccSource asterisk 1.14 93/07/05 16:13:
 %token TOK_INDENT1 TOK_INDENT2 TOK_INDENT3 TOK_INDENT_BAD
 %token TOK_LF TOK_INF TOK_SUP TOK_DQUOTE TOK_SPACE TOK_BEGIN TOK_END
 %token TOK_BAD
-%token <theChar> TOK_CHAR 
+%token <theChar> TOK_CHAR
 %token <theString> TOK_COMPOSED2 TOK_COMPOSED1
 	/* -------------- rules section -------------- */
 %%
-man_page	: header_page  corps_page 
+man_page	: header_page  corps_page
 		;
 /* SAUTS DE LIGNE , ESPACES */
 sauts_ligne	:	TOK_SPACE TOK_LF
@@ -82,7 +82,7 @@ espaces0	: espaces
 
 un_char_symbol	: TOK_CHAR {printf("%c",$<theChar>1);}
 		;
-un_char_mot	:TOK_CHAR {switch($<theChar>1) 
+un_char_mot	:TOK_CHAR {switch($<theChar>1)
                              {case '.': case '-': case ' ': printf("\\%c",$<theChar>1); break;
 			      case '"': printf("\"");break;
 			      case '\\': printf("\\e");break;
@@ -126,8 +126,8 @@ texte_italique	: TOK_INF {printf("\\fI");} texte TOK_SUP {printf("\\fP");}
 /* texte quote */
 un_space_texte_quote : espaces {printf(" ");}
 		;
-		
-un_char_mot_quote	: TOK_CHAR {switch($<theChar>1) 
+
+un_char_mot_quote	: TOK_CHAR {switch($<theChar>1)
                              {case '\\':   printf("\\\\e"); break;
 			      case '"': printf("\"\"");break;
 			      case '-': case '.': case ' ': printf("\\\\%c",$<theChar>1);break;
@@ -158,7 +158,7 @@ texte_bold_quote	: TOK_DQUOTE {printf("\\\\fB");} texte_quote {printf("\\\\fP");
 		;
 texte_italique_quote	: TOK_INF {printf("\\\\fI");} texte_quote TOK_SUP {printf("\\\\fP");}
 		;
-		
+
 
 /* HEADER */
 header_page	: sauts0_ligne  CMD_HEADER {printf(".TH ");} espaces argument_nom espaces argument_nom espaces0 argument_texte espaces0 argument_texte espaces0 argument_texte sauts_ligne {printf("\n");}
@@ -190,7 +190,7 @@ paragraphe	:  espaces0   texte_riche sauts_ligne {printf("\n");}
 paragraphe_opt  :   sauts_ligne
 		|  paragraphe
 		;
-paragraphe_relatif : {printf(".IP\n");}  paragraphe  
+paragraphe_relatif : {printf(".IP\n");}  paragraphe
 		;
 label_item	: espaces0  TOK_BEGIN espaces0 texte_riche_quote espaces0 TOK_END
 		| espaces0  TOK_BEGIN error TOK_END {printf("\n.\\\"ERROR\n");yyerrok;fprintf(stderr,"Label badly formed!\n");}
@@ -217,7 +217,7 @@ bloc1i		: item1
 		;
 bloc1b		: bloc1i {printf(".RS\n.\\\"bloc2[\n");} bloc2 {printf(".RE\n.\\\"bloc2]\n");}
 		;
-item1		: TOK_ITEM1     un_item   
+item1		: TOK_ITEM1     un_item
 		| TOK_INDENT1 paragraphe_relatif
 		;
 

@@ -2,7 +2,7 @@ static char SccsId[]="%Z% %M% %Y% %Q% %I% %E% %U% (%F%)";
 //
 // Nom du Fichier : 	|>nom_fichier<|
 // Titre : 		|>Titre<|
-// Auteur:		|>auteur<|		
+// Auteur:		|>auteur<|
 // Date de creation :	|>dateCreation<|
 //
 // Description :
@@ -10,7 +10,7 @@ static char SccsId[]="%Z% %M% %Y% %Q% %I% %E% %U% (%F%)";
 //	Objet : |>objet<|
 //
 //
-// 
+//
 // historique :
 // |>date<|	|>auteur<|	|>objet<|
 //
@@ -23,7 +23,7 @@ class MyCompiler : public MyParser
  public:
  virtual int yylex();
  virtual void yyerror(const char *m);
- MyCompiler() 
+ MyCompiler()
   {};
 };
 
@@ -49,4 +49,3 @@ int main(int argc,char **argv)
  printf("Resultat Parsing=%s\n",result?"Erreur":"OK");
  return 0;
 };
-
