@@ -61,7 +61,7 @@ man_page
 
 /* HEADER */
 header_page
-	: sauts0_ligne CMD_HEADER {printf(".TH ");} espaces argument_nom espaces argument_nom espaces0 argument_texte espaces0 argument_texte espaces0 argument_texte sauts_ligne {printf("\n");}
+	: sauts0_ligne CMD_HEADER {printf(".TH ");} argument_nom argument_nom argument_texte argument_texte argument_texte sauts_ligne {printf("\n");}
 	| sauts0_ligne CMD_HEADER error sauts_ligne {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, ":HEADER badly formed!\n");}
 	;
 
@@ -78,8 +78,8 @@ section
 	;
 
 header_section
-	: CMD_SECTION {printf(".SH ");} espaces0 argument_texte sauts_ligne {printf("\n");}
-	| CMD_SSECTION {printf(".SS ");} espaces0 argument_texte sauts_ligne {printf("\n");}
+	: CMD_SECTION {printf(".SH ");} argument_texte sauts_ligne {printf("\n");}
+	| CMD_SSECTION {printf(".SS ");} argument_texte sauts_ligne {printf("\n");}
 	| CMD_SECTION error sauts_ligne {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, ":SECTION badly formed!\n");}
 	| CMD_SSECTION error sauts_ligne {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, ":SSECTION badly formed!\n");}
 	;
@@ -167,10 +167,10 @@ paragraphe
 
 /* ARGUMENTS */
 argument_nom
-	: symbole {printf(" ");}
+	: espaces symbole {printf(" ");}
 	;
 argument_texte
-	: TOK_DQUOTE {printf("\"");} texte_quote TOK_DQUOTE {printf("\" ");}
+	: espaces0 TOK_DQUOTE {printf("\"");} texte_quote TOK_DQUOTE {printf("\" ");}
 	;
 symbole
 	: un_char_symbol
