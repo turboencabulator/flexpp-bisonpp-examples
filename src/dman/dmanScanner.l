@@ -56,13 +56,13 @@ PRINT_CHAR [\x21-\x7e]
 <INITIAL>":"[Ss][eE][cC][Tt][Ii][Oo][Nn]	{BEGIN(DANS_LIGNE);return DmanParser::CMD_SECTION;}
 <INITIAL>":"[Ss][Ss][eE][cC][Tt][Ii][Oo][Nn]	{BEGIN(DANS_LIGNE);return DmanParser::CMD_SSECTION;}
 <INITIAL>":"[A-Za-z0-9_]*		{BEGIN(DANS_LIGNE);return DmanParser::CMD_BAD;}
-<INITIAL>("-")		{BEGIN(DANS_LIGNE);return DmanParser::TOK_ITEM1;}
-<INITIAL>("--")		{BEGIN(DANS_LIGNE);return DmanParser::TOK_ITEM2;}
-<INITIAL>("---")	{BEGIN(DANS_LIGNE);return DmanParser::TOK_ITEM3;}
+<INITIAL>("-"){SPACES}		{BEGIN(DANS_LIGNE);return DmanParser::TOK_ITEM1;}
+<INITIAL>("--"){SPACES}		{BEGIN(DANS_LIGNE);return DmanParser::TOK_ITEM2;}
+<INITIAL>("---"){SPACES}	{BEGIN(DANS_LIGNE);return DmanParser::TOK_ITEM3;}
 <INITIAL>("-"+)		{BEGIN(DANS_LIGNE);return DmanParser::TOK_ITEM_BAD;}
-<INITIAL>(">")		{BEGIN(DANS_LIGNE);return DmanParser::TOK_INDENT1;}
-<INITIAL>(">>")		{BEGIN(DANS_LIGNE);return DmanParser::TOK_INDENT2;}
-<INITIAL>(">>>")	{BEGIN(DANS_LIGNE);return DmanParser::TOK_INDENT3;}
+<INITIAL>(">"){SPACES}		{BEGIN(DANS_LIGNE);return DmanParser::TOK_INDENT1;}
+<INITIAL>(">>"){SPACES}		{BEGIN(DANS_LIGNE);return DmanParser::TOK_INDENT2;}
+<INITIAL>(">>>"){SPACES}	{BEGIN(DANS_LIGNE);return DmanParser::TOK_INDENT3;}
 <INITIAL>(">"+)		{BEGIN(DANS_LIGNE);return DmanParser::TOK_INDENT_BAD;}
 
 
@@ -72,8 +72,8 @@ PRINT_CHAR [\x21-\x7e]
 
 {SPACES1}  		{BEGIN(DANS_LIGNE);return DmanParser::TOK_SPACE;}
 "\""	{BEGIN(DANS_LIGNE);return DmanParser::TOK_DQUOTE;}
-"{"	{BEGIN(DANS_LIGNE);return DmanParser::TOK_BEGIN;}
-"}"	{BEGIN(DANS_LIGNE);return DmanParser::TOK_END;}
+{SPACES}"{"{SPACES}	{BEGIN(DANS_LIGNE);return DmanParser::TOK_BEGIN;}
+{SPACES}"}"{SPACES}	{BEGIN(DANS_LIGNE);return DmanParser::TOK_END;}
 "<"	{BEGIN(DANS_LIGNE);return DmanParser::TOK_INF;}
 ">"	{BEGIN(DANS_LIGNE);return DmanParser::TOK_SUP;}
 

@@ -150,8 +150,8 @@ un_item
 	| error sauts_ligne {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Labeled paragraph badly formed!\n");}
 	;
 label_item
-	: espaces0 TOK_BEGIN espaces0 texte_riche_quote espaces0 TOK_END
-	| espaces0 TOK_BEGIN error TOK_END {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Label badly formed!\n");}
+	: TOK_BEGIN texte_riche_quote TOK_END
+	| TOK_BEGIN error TOK_END {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Label badly formed!\n");}
 	;
 paragraphe_opt
 	: sauts_ligne
@@ -161,8 +161,8 @@ paragraphe_relatif
 	: {printf(".IP\n");} paragraphe
 	;
 paragraphe
-	: espaces0 texte_riche sauts_ligne {printf("\n");}
-	| espaces0 error sauts_ligne {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Paragraph badly formed!\n");}
+	: texte_riche sauts_ligne {printf("\n");}
+	| error sauts_ligne {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Paragraph badly formed!\n");}
 	;
 
 /* ARGUMENTS */
