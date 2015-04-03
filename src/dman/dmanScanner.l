@@ -50,7 +50,7 @@ PRINT_CHAR [\x21-\x7e]
 %%
 <INITIAL>{SPACES1}      {BEGIN(INITIAL);}
 {SPACES}{LF}            {BEGIN(INITIAL); theLine++; theColumn = 1; return DmanParser::TOK_LF;}
-\\{LF}                  {BEGIN(DANS_LIGNE); theLine++; theColumn = 1;}
+\\{LF}                  {theLine++; theColumn = 1;}
 
 <INITIAL>":"[Hh][eE][aA][Dd][Ee][Rr]            {BEGIN(DANS_LIGNE); return DmanParser::CMD_HEADER;}
 <INITIAL>":"[Ss][eE][cC][Tt][Ii][Oo][Nn]        {BEGIN(DANS_LIGNE); return DmanParser::CMD_SECTION;}
