@@ -146,7 +146,7 @@ PRINT_CHAR [\x21-\x7e]
 
 "%"                             {BEGIN(DANS_COMMENT);}
 <DANS_COMMENT>{ANY_CHAR}+       {}
-<DANS_COMMENT>{LF}{SPACES}      {BEGIN(INITIAL); theLine++; theColumn = 1;}
+<DANS_COMMENT>{LF}              {BEGIN(INITIAL); theLine++; theColumn = 1;}
 
 \\              {BEGIN(DANS_LIGNE); return DmanParser::TOK_BAD;}
 {PRINT_CHAR}    {BEGIN(DANS_LIGNE); theValue.theChar = theText[0]; return DmanParser::TOK_CHAR;}
