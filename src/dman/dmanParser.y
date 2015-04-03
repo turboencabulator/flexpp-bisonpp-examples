@@ -146,11 +146,16 @@ item3
 	;
 
 un_item
-	: {printf(".IP \"");} label_item {printf("\"\n");} paragraphe_opt
+	: label_item paragraphe_opt
+	| label_item {printf(".PD 0\n");} label_items {printf(".PD\n");} paragraphe_opt
 	| error sauts_ligne {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Labeled paragraph badly formed!\n");}
 	;
+label_items
+	: label_item
+	| label_items label_item
+	;
 label_item
-	: TOK_BEGIN texte_riche_quote TOK_END
+	: TOK_BEGIN {printf(".IP \"");} texte_riche_quote TOK_END {printf("\"\n");}
 	| TOK_BEGIN error TOK_END {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Label badly formed!\n");}
 	;
 paragraphe_opt
