@@ -146,8 +146,8 @@ item3
 	;
 
 un_item
-	: label_item paragraphe_opt
-	| label_item {printf(".PD 0\n");} label_items {printf(".PD\n");} paragraphe_opt
+	: label_item paragraphe
+	| label_item {printf(".PD 0\n");} label_items {printf(".PD\n");} paragraphe
 	| error sauts_ligne {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Labeled paragraph badly formed!\n");}
 	;
 label_items
@@ -157,10 +157,6 @@ label_items
 label_item
 	: TOK_BEGIN {printf(".IP \"");} texte_riche_quote TOK_END {printf("\"\n");}
 	| TOK_BEGIN error TOK_END {printf("\n.\\\"ERROR\n"); yyerrok; fprintf(stderr, "Label badly formed!\n");}
-	;
-paragraphe_opt
-	: sauts_ligne
-	| paragraphe
 	;
 paragraphe_relatif
 	: {printf(".IP\n");} paragraphe
